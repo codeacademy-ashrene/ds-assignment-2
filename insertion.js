@@ -1,8 +1,3 @@
-// const printArray = (array) => {
-//   array.forEach(element => {
-//     console.log(element);
-//   });
-// }
 const circularSort = (x) => {
   let i;
   let length = x.length;
@@ -12,84 +7,69 @@ const circularSort = (x) => {
     y[i] = -1;
   }
   y[0] = x[0];
-  var immediateSmall = 0, immediateLarge = 0;
- //printArray(y);
- console.log(y);
+  var smallestInArray = 0, largestInArray = 0;
+  console.log(y);
   for(i = 1; i < x.length; i++){
-    let S = 0, L= 0;
+    let countSmallerThanKey = 0, countLargerThanKey= 0;
     let key = x[i];
     var largeKey = -1, smallKey = -1;
-    console.log(key);
+
     for(j=0; j<y.length;j++){
       if((y[j]<key)&&(y[j] != -1)){
-        S++;
-        console.log(S);
+        countSmallerThanKey++;
+
         if(smallKey < y[j]){
           smallKey = y[j];
-          immediateSmall = j;
+
+          smallestInArray = j;
         }
-          
-        console.log(immediateSmall);
+
       }
       if((y[j] > key)&&(y[j] != -1)){
-        L++;
-        console.log(L);
+        countLargerThanKey++;
+
         if(y[j] > largeKey){
           largeKey = y[j];
-          immediateLarge = j;
+          largestInArray = j;
         }
-        
-        console.log(immediateLarge);
+
       }
     }
 
-    if(S>=L){
-      // shift L right
-      if(L>0){
-        for(k = L; k>=1; k--){
-            // if(y[immediateLarge+L] == -1){
-            //   y[immediateLarge+k] = y[immediateLarge+k-1];
-            // }
-            // else{
-              y[(immediateLarge+k) % length] = y[(immediateLarge+k-1) % length];
-              console.log(y);
-            //}
+    if(countSmallerThanKey>=countLargerThanKey){
+
+      if(countLargerThanKey>0){
+        for(k = countLargerThanKey; k>=1; k--){
+
+              y[(largestInArray+k) % length] = y[(largestInArray+k-1) % length];
+
         }
-        y[immediateLarge] = key;
+        y[largestInArray] = key;
       }
-      if(L === 0){
-        y[(immediateSmall+1) % length] = key;
-        console.log(y[(immediateSmall+1) % length])
-        console.log((immediateSmall+1) % length)
+      if(countLargerThanKey === 0){
+        y[(smallestInArray+1) % length] = key;
+
       }
-      
-      console.log(y);
 
     }
     else{
-      if(S>0){
-        for(k = S; k>=1; k--){
-          // if(y[immediateSmall-S] == -1){
-          //   y[immediateLarge+k] = y[immediateLarge+k-1];
-          // }
-          // else{
-            y[((length + (immediateSmall-k))%length)] = y[((length + (immediateSmall-k+1))%length)];
-            console.log(y);
-          // }
+      if(countSmallerThanKey>0){
+        for(k = countSmallerThanKey; k>=1; k--){
+
+            y[((length + (smallestInArray-k))%length)] = y[((length + (smallestInArray-k+1))%length)];
+
         }
-        y[immediateSmall] = key;
+        y[smallestInArray] = key;
       }
-      if (S === 0){
-        y[(length - (immediateLarge+1))] = key;
-        console.log(y[(length - (immediateLarge+1))])
-        console.log((length - (immediateLarge+1)));
+      if (countSmallerThanKey === 0){
+        y[(length - (countLargerThanKey - largestInArray))] = key;
+
       }
-    
-    console.log(y);
+
     }
-    //printArray(y);
     console.log(y);
   }
+  
   return y;
 }
 
