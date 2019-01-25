@@ -1,4 +1,15 @@
-const circularSort = (x) => {
+const stringToArray = (string) => {
+  let newArray = [];
+  newArray = string.split(' ').map(Number);
+  // const returnArray = newArray.forEach((element) => {
+  // Number(element);
+  // });
+  console.log(newArray);
+  return newArray.slice(1);
+};
+
+const circularSort = (xString) => {
+  const x = stringToArray(xString);
   let i;
   let j;
   let k;
@@ -67,5 +78,6 @@ const circularSort = (x) => {
 
   return y;
 };
+
 
 module.exports = circularSort;
