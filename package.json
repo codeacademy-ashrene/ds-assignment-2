@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/codeacademy-ashrene/ds-assignment-2/issues"
   },
-  "homepage": "https://github.com/codeacademy-ashrene/ds-assignment-2#readme"
+  "homepage": "https://github.com/codeacademy-ashrene/ds-assignment-2#readme",
+  "dependencies": {
+    "node-modules": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0"
+  }
 }
