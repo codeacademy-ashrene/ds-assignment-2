@@ -1,10 +1,7 @@
 const stringToArray = (string) => {
   let newArray = [];
   newArray = string.split(' ').map(Number);
-  // const returnArray = newArray.forEach((element) => {
-  // Number(element);
-  // });
-  console.log(newArray);
+  // console.log(newArray);
   return newArray.slice(1);
 };
 
@@ -15,22 +12,23 @@ const circularSort = (xString) => {
   let k;
   const length = x.length;
   const y = [];
-
+  const resultArray = [];
   for (i = 0; i < length; i += 1) {
     y[i] = -1;
   }
 
   y[0] = x[0];
-
-  let smallestInArray = 0; let
-    largestInArray = 0;
   console.log(y);
+  let smallestInArray = 0;
+  let largestInArray = 0;
+
+  // console.log(y);
   for (i = 1; i < x.length; i += 1) {
-    let countSmallerThanKey = 0; let
-      countLargerThanKey = 0;
+    let countSmallerThanKey = 0;
+    let countLargerThanKey = 0;
     const key = x[i];
-    let largeKey = -1; let
-      smallKey = -1;
+    let largeKey = -1;
+    let smallKey = -1;
 
     for (j = 0; j < y.length; j += 1) {
       if ((y[j] < key) && (y[j] !== -1)) {
@@ -69,10 +67,13 @@ const circularSort = (xString) => {
         }
         y[smallestInArray] = key;
       }
+
       if (countSmallerThanKey === 0) {
         y[(length - (countLargerThanKey - largestInArray))] = key;
       }
     }
+    // resultArray.push(y);
+    // console.log(y);
     console.log(y);
   }
 
